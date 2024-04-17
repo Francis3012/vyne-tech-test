@@ -1,0 +1,101 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+$md-primary: (
+    50 : #e2e1e5,
+    100 : #b6b3bf,
+    200 : #868094,
+    300 : #554d69,
+    400 : #302748,
+    500 : #0c0128,
+    600 : #0a0124,
+    700 : #08011e,
+    800 : #060118,
+    900 : #03000f,
+    A100 : #5252ff,
+    A200 : #1f1fff,
+    A400 : #0000eb,
+    A700 : #0000d1,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #ffffff,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #ffffff,
+        A200 : #ffffff,
+        A400 : #ffffff,
+        A700 : #ffffff,
+    )
+);
+
+$md-accent: (
+    50 : #f0ecf4,
+    100 : #dacfe5,
+    200 : #c1afd3,
+    300 : #a88fc1,
+    400 : #9677b4,
+    500 : #835fa7,
+    600 : #7b579f,
+    700 : #704d96,
+    800 : #66438c,
+    900 : #53327c,
+    A100 : #dfc7ff,
+    A200 : #c294ff,
+    A400 : #a561ff,
+    A700 : #9747ff,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #ffffff,
+    )
+);
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$vyne-tech-test-primary: mat.define-palette($md-primary);
+$vyne-tech-test-accent: mat.define-palette($md-accent, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$vyne-tech-test-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$vyne-tech-test-theme: mat.define-light-theme((
+  color: (
+    primary: $vyne-tech-test-primary,
+    accent: $vyne-tech-test-accent,
+    warn: $vyne-tech-test-warn,
+  ),
+  typography: mat.define-typography-config(),
+  density: 0
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($vyne-tech-test-theme);
