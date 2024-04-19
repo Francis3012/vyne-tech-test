@@ -1,1 +1,23 @@
-<p>payment-list works!</p>
+<mat-accordion>
+	@for (paymentDetail of paymentDetails; track paymentDetail.id) {
+		<mat-expansion-panel hideToggle>
+			<mat-expansion-panel-header>
+				<mat-panel-title>
+					Status: {{ paymentDetail.status }}
+				</mat-panel-title>
+				<mat-panel-description class="d-none d-md-block">
+					{{ paymentDetail.description }}
+				</mat-panel-description>
+			</mat-expansion-panel-header>
+			<div>
+				<p>ID: {{ paymentDetail.id }}</p>
+				<p>Currency: {{ paymentDetail.currency }}</p>
+				<p>Amount: {{ paymentDetail.amount }}</p>
+				<p>Created at: {{ paymentDetail.createdAt | date:'yyyy-MM-dd' }}</p>
+				<p>{{ paymentDetail.description }}</p>
+			</div>
+		</mat-expansion-panel>
+	} @empty {
+		<h3 class="d-flex align-items-center justify-content-center">No payment details match current filters</h3>
+	}
+</mat-accordion>

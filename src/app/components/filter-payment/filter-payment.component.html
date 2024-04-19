@@ -1,0 +1,34 @@
+<div class="d-flex flex-column flex-md-row justify-content-between mt-4">
+	<mat-form-field appearance="outline" (click)="picker.open()">
+		<mat-label>Enter a date range</mat-label>
+		<mat-date-range-input [rangePicker]="picker">
+		  <input matStartDate [(ngModel)]="createdAtStart" placeholder="Start date">
+		  <input matEndDate [(ngModel)]="createdAtEnd" placeholder="End date">
+		</mat-date-range-input>
+		<mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+		<mat-date-range-picker #picker></mat-date-range-picker>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+		<mat-label>Status</mat-label>
+		<mat-select [(value)]="status">
+			<mat-option [value]="undefined">---</mat-option>
+			@for (stat of statuses; track stat) {
+				<mat-option [value]="stat">{{ stat }}</mat-option>
+			}
+		</mat-select>
+	</mat-form-field>
+
+	<mat-paginator
+		[length]="totalNumberOfItems"
+		[pageIndex]="pageIndex"
+		[pageSize]="5"
+		aria-label="Select page"
+		(page)="handlePageEvent($event)"
+	>
+	</mat-paginator>
+</div>
+<div class="d-flex justify-content-between">
+	<button mat-stroked-button color="primary" class="w-100 me-1" (click)="clearFilter()">Clear Filter</button>
+	<button mat-stroked-button color="primary" class="w-100 ms-1" (click)="updateFilter()">Set Filter</button>
+</div>

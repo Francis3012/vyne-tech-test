@@ -1,1 +1,20 @@
-<app-payment-list />
+<section class="container d-flex flex-column justify-content-center h-100">
+	@if (loading()) {
+		<app-loading-state />
+	} @else {
+		@if ((paymentDetails$ | async); as paymentDetails) {
+			@if (error()) {
+				<h2 class="d-flex justify-content-center">API error, please refresh</h2>
+			} @else {
+				<app-payment-list [paymentDetails]="paymentDetails?.items"/>
+				<app-filter-payment
+					[pageIndex]="paymentDetails?.currentPage"
+					[totalNumberOfItems]="paymentDetails?.totalNumberOfItems"
+					[numberOfPages]="paymentDetails?.numberOfPages"
+					[lastPaymentsQuery]="lastPaymentsQuery"
+					(onFilterChange)="update($event)"
+				/>
+			}
+		}
+	}
+</section>

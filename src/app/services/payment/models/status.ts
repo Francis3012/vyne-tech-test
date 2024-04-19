@@ -1,0 +1,7 @@
+export enum Status {
+	CAPTURED = 'CAPTURED',
+	COMPLETED = 'COMPLETED',
+	CREATED = 'CREATED',
+	FAILED = 'FAILED',
+	SETTLED = 'SETTLED'
+}
