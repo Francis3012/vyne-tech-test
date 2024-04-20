@@ -40,7 +40,6 @@ export class PaymentService {
 					this.loading.set(false);
 				},
 				error: (error) => {
-					console.log(error)
 					this.error.set(error)
 					this.loading.set(false);
 				}
